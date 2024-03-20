@@ -4,7 +4,7 @@ import hello_pb2_grpc
 import hello_server
 
 def test_say_hi():
-    server = grpc.server(grpc.ThreadPoolExecutor(max_workers=10))
+    server = grpc.server()
     hello_pb2_grpc.add_HelloServiceServicer_to_server(hello_server.HelloService(), server)
     server.add_insecure_port('[::]:50051')
     server.start()
@@ -17,7 +17,7 @@ def test_say_hi():
     server.stop(0)
 
 def test_say_hello():
-    server = grpc.server(grpc.ThreadPoolExecutor(max_workers=10))
+    server = grpc.server()
     hello_pb2_grpc.add_HelloServiceServicer_to_server(hello_server.HelloService(), server)
     server.add_insecure_port('[::]:50051')
     server.start()
